@@ -233,7 +233,7 @@ func makeStatefulSetSpec(
 	pImagePath, err := operator.BuildImagePath(
 		ptr.Deref(cpf.Image, ""),
 		operator.StringValOrDefault(baseImage, c.PrometheusDefaultBaseImage),
-		operator.StringValOrDefault(cpf.Version, operator.DefaultPrometheusVersion),
+		operator.DefaultPrometheusVersion,
 		operator.StringValOrDefault(tag, ""),
 		operator.StringValOrDefault(sha, ""),
 	)

@@ -258,7 +258,7 @@ func ValidateRelabelConfigs(p monitoringv1.PrometheusInterface, rcs []monitoring
 
 func validateRelabelConfig(p monitoringv1.PrometheusInterface, rc monitoringv1.RelabelConfig) error {
 	relabelTarget := regexp.MustCompile(`^(?:(?:[a-zA-Z_]|\$(?:\{\w+\}|\w+))+\w*)+$`)
-	promVersion := operator.StringValOrDefault(p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
@@ -1056,7 +1056,7 @@ func (rs *ResourceSelector) validateEC2SDConfigs(ctx context.Context, sc *monito
 }
 
 func (rs *ResourceSelector) validateAzureSDConfigs(ctx context.Context, sc *monitoringv1alpha1.ScrapeConfig) error {
-	promVersion := operator.StringValOrDefault(rs.p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse Prometheus version: %w", err)
@@ -1162,7 +1162,7 @@ func (rs *ResourceSelector) validateDockerSDConfigs(ctx context.Context, sc *mon
 	return nil
 }
 func (rs *ResourceSelector) validateLinodeSDConfigs(ctx context.Context, sc *monitoringv1alpha1.ScrapeConfig) error {
-	promVersion := operator.StringValOrDefault(rs.p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse Prometheus version: %w", err)
@@ -1298,7 +1298,7 @@ func (rs *ResourceSelector) validateNomadSDConfigs(ctx context.Context, sc *moni
 }
 
 func (rs *ResourceSelector) validateDockerSwarmSDConfigs(ctx context.Context, sc *monitoringv1alpha1.ScrapeConfig) error {
-	promVersion := operator.StringValOrDefault(rs.p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse Prometheus version: %w", err)
@@ -1336,7 +1336,7 @@ func (rs *ResourceSelector) validateDockerSwarmSDConfigs(ctx context.Context, sc
 }
 
 func (rs *ResourceSelector) validatePuppetDBSDConfigs(ctx context.Context, sc *monitoringv1alpha1.ScrapeConfig) error {
-	promVersion := operator.StringValOrDefault(rs.p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse Prometheus version: %w", err)
@@ -1381,7 +1381,7 @@ func (rs *ResourceSelector) validatePuppetDBSDConfigs(ctx context.Context, sc *m
 }
 
 func (rs *ResourceSelector) validateLightSailSDConfigs(ctx context.Context, sc *monitoringv1alpha1.ScrapeConfig) error {
-	promVersion := operator.StringValOrDefault(rs.p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse Prometheus version: %w", err)
@@ -1426,7 +1426,7 @@ func (rs *ResourceSelector) validateLightSailSDConfigs(ctx context.Context, sc *
 }
 
 func (rs *ResourceSelector) validateOVHCloudSDConfigs(ctx context.Context, sc *monitoringv1alpha1.ScrapeConfig) error {
-	promVersion := operator.StringValOrDefault(rs.p.GetCommonPrometheusFields().Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse Prometheus version: %w", err)

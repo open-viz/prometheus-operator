@@ -841,7 +841,7 @@ func (c *Operator) provisionAlertmanagerConfiguration(ctx context.Context, am *m
 		return nil
 	}
 
-	amVersion := operator.StringValOrDefault(am.Spec.Version, operator.DefaultAlertmanagerVersion)
+	amVersion := operator.DefaultAlertmanagerVersion
 	version, err := semver.ParseTolerant(amVersion)
 	if err != nil {
 		return fmt.Errorf("failed to parse alertmanager version: %w", err)

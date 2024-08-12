@@ -73,9 +73,7 @@ func NewConfigGenerator(logger log.Logger, p monitoringv1.PrometheusInterface, e
 		logger = log.NewNopLogger()
 	}
 
-	cpf := p.GetCommonPrometheusFields()
-
-	promVersion := operator.StringValOrDefault(cpf.Version, operator.DefaultPrometheusVersion)
+	promVersion := operator.DefaultPrometheusVersion
 	version, err := semver.ParseTolerant(promVersion)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse Prometheus version: %w", err)

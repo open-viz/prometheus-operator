@@ -158,7 +158,7 @@ func makeStatefulSetSpec(
 	pImagePath, err := operator.BuildImagePathForAgent(
 		ptr.Deref(cpf.Image, ""),
 		c.PrometheusDefaultBaseImage,
-		operator.StringValOrDefault(cpf.Version, operator.DefaultPrometheusVersion),
+		operator.DefaultPrometheusVersion,
 	)
 	if err != nil {
 		return nil, err
